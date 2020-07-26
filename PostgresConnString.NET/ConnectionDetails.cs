@@ -30,7 +30,7 @@ namespace PostgresConnString.NET
             {
                 throw new ArgumentNullException(nameof(url), "Url cannot be null.");
             }
-            
+
             if (string.IsNullOrWhiteSpace(url))
             {
                 throw new ArgumentException(nameof(url), "Url cannot be empty or contain only whitespace characters.");
@@ -39,5 +39,8 @@ namespace PostgresConnString.NET
             var (host, user, password, database, port) = Parser.Parse(url);
             return new ConnectionDetails(host, user, password, database, port);
         }
+
+        public string ToNpgsqlSConnectionString() =>
+            $"User ID={User};Password={Password};Server={Host};Port={Port};Database={Database};Pooling=true;SSL Mode=Prefer;Trust Server Certificate=true";
     }
 }
