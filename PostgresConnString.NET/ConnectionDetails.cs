@@ -15,6 +15,9 @@ namespace PostgresConnString.NET
 
         public string Password { get; set; } = string.Empty;
 
+        /// <summary>
+        /// 
+        /// </summary>
         public ConnectionDetails()
         {
         }
