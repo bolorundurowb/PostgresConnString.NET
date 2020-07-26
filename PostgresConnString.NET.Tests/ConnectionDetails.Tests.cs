@@ -31,7 +31,7 @@ namespace PostgresConnString.NET.Tests
         }
         
         [Fact]
-        public void OverloadConstructorShouldUseDefaultValue()
+        public void OverloadConstructorShouldUseProvidedValues()
         {
             var host = "localhost";
             var user = "user";
@@ -59,6 +59,31 @@ namespace PostgresConnString.NET.Tests
             details.Port
                 .Should()
                 .Be(port);
+        }
+        
+        [Fact]
+        public void OverloadConstructorShouldUseDefaultValueWhenNullIsPassed()
+        {
+            var details = new ConnectionDetails(null, null, null, null, null);
+
+            details
+                .Should()
+                .NotBeNull();
+            details.Database
+                .Should()
+                .BeEmpty();
+            details.User
+                .Should()
+                .BeEmpty();
+            details.Password
+                .Should()
+                .BeEmpty();
+            details.Host
+                .Should()
+                .BeEmpty();
+            details.Port
+                .Should()
+                .Be(5432);
         }
     }
 }
