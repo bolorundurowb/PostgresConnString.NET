@@ -3,7 +3,7 @@ using Xunit;
 
 namespace PostgresConnString.NET.Tests
 {
-    public class ConnectionDetailsTests
+    public class ConstructorTests
     {
         [Fact]
         public void DefaultConstructorShouldUseDefaultValue()
