@@ -14,7 +14,7 @@ namespace PostgresConnString.NET.Tests
                 .Should()
                 .ThrowExactly<ArgumentNullException>();
         }
-        
+
         [Fact]
         public void ShouldThrowOnEmptyInput()
         {
@@ -23,7 +23,7 @@ namespace PostgresConnString.NET.Tests
                 .Should()
                 .ThrowExactly<ArgumentException>();
         }
-        
+
         [Fact]
         public void ShouldThrowOnWhitespaceInput()
         {
@@ -32,14 +32,30 @@ namespace PostgresConnString.NET.Tests
                 .Should()
                 .ThrowExactly<ArgumentException>();
         }
-        
+
         [Fact]
-        public void ShouldParseUnixSocketUrl()
+        public void ShouldParsePostgresUrlString()
         {
-            Action action = () => ConnectionDetails.Parse("  \t \r \n");
-            action
+            var details = ConnectionDetails.Parse("postgres://someuser:somepassword@somehost:381/somedatabase");
+
+            details
                 .Should()
-                .ThrowExactly<ArgumentException>();
+                .NotBeNull();
+            details.Database
+                .Should()
+                .Be("somedatabase");
+            details.User
+                .Should()
+                .Be("someuser");
+            details.Password
+                .Should()
+                .Be("somepassword");
+            details.Host
+                .Should()
+                .Be("somehost");
+            details.Port
+                .Should()
+                .Be(381);
         }
     }
 }
