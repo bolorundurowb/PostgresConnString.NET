@@ -24,7 +24,7 @@ namespace PostgresConnString.NET.Utils
             var uri = new Uri(url);
 
             var databasePath = uri.AbsolutePath;
-            var auth = uri.UserInfo;
+            var auth = uri.UserInfo ?? ":";
             var authParts = auth.Split(new[]
             {
                 ':'
