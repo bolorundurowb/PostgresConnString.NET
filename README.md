@@ -10,34 +10,52 @@ This library aims to give as accurate an estimate of the read time for an articl
 You can install the package from nuget
 
 ```
-Install-Package ReadTimeEstimator
+Install-Package PostgresConnString.NET
 ```
 
 or
 
 ```
-dotnet add package ReadTimeEstimator
+dotnet add package PostgresConnString.NET
 ```
 
 or for paket
 
 ```
-paket add ReadTimeEstimator
+paket add PostgresConnString.NET
 ```
 
 ## Usage
 
-This package provided two estimators, one for HTML and one for Markdown, `HtmlEstimator` and `MarkdownEstimator` respectively. On each estimator, two methods are provided for retrieving the time estimates. `ReadTimeInMinutes` returns a `double` value which is the estimated read time in minutes. `HumanFriendlyReadTime` returns a `string` which is  the read time in human friendly form.
- 
-A classic usage example:
+### Parsing Urls
+
+To parse a url
 
 ```csharp
-using ReadTimeEstimator.Implementations.Estimators;
-
+using PostgresConnString.NET;
 ...
-
-var htmlEstimator = new HtmlEstimator();
-var markdownEstimator = new MarkdownEstimator();
-var htmlReadTime = htmlEstimator.ReadTimeInMinutes("<div>Hello World</div>"); // 0.00727
-var markdownReadTime = markdownEstimator.HumanFriendlyReadTime("# Hello World"); // less than a minute
+var details = ConnectionDetails.Parse("postgres://someuser:somepassword@somehost:381/somedatabase");
 ```
+
+The resulting details contains a subset of the following properties:
+
+* `Host` - Postgres server hostname
+* `Port` - port on which to connect
+* `User` - User with which to authenticate to the server
+* `Password` - Corresponding password
+* `Database` - Database name within the server
+
+### Exports
+
+Currently, this library allows for generating an NPGSQL compatible connection string.
+
+```csharp
+using PostgresConnString.NET;
+...
+var details = ConnectionDetails.Parse("postgres://someuser:somepassword@somehost:381/somedatabase");
+var connString = details.ToNpgsqlSConnectionString(); //User ID=someuser;Password=somepassword;Server=somehost;Port=381;Database=somedatabase;Pooling=true;SSL Mode=Prefer;Trust Server Certificate=true
+```
+
+## Contributing
+
+Feel free to make requests and to open P=pull requests with fixes and updates.
