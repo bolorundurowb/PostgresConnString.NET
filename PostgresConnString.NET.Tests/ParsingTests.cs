@@ -32,5 +32,14 @@ namespace PostgresConnString.NET.Tests
                 .Should()
                 .ThrowExactly<ArgumentException>();
         }
+        
+        [Fact]
+        public void ShouldParseUnixSocketUrl()
+        {
+            Action action = () => ConnectionDetails.Parse("  \t \r \n");
+            action
+                .Should()
+                .ThrowExactly<ArgumentException>();
+        }
     }
 }
