@@ -1,6 +1,19 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFrameworks>netstandard1.3;netstandard2.0</TargetFrameworks>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Title>PostgresConnString</Title>
+        <Authors>Bolorunduro Winner-Timothy</Authors>
+        <Description>A library to parse postgres connection strings</Description>
+        <Copyright> © Bolorunduro WInner-Timothy 2020</Copyright>
+        <PackageProjectUrl>https://github.com/bolorundurowb/PostgresConnString.NET</PackageProjectUrl>
+        <PackageLicenseUrl>https://github.com/bolorundurowb/PostgresConnString.NET/blob/master/LICENSE</PackageLicenseUrl>
+        <RepositoryUrl>https://github.com/bolorundurowb/PostgresConnString.NET</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageTags>postgres, connection, string, connection string, parse</PackageTags>
+        <AssemblyVersion>1.0.0</AssemblyVersion>
+        <FileVersion>1.0.0</FileVersion>
+        <NeutralLanguage>en-NG</NeutralLanguage>
     </PropertyGroup>
 
     <ItemGroup Condition="'$(TargetFramework)' == 'netstandard1.3'">
