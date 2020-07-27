@@ -9,7 +9,7 @@ namespace PostgresConnString.NET.Utils
             var uri = new Uri(url);
 
             var databasePath = uri.AbsolutePath;
-            var auth = uri.UserInfo ?? ":";
+            var auth = string.IsNullOrWhiteSpace(uri.UserInfo) ? ":" : uri.UserInfo;
             var authParts = auth.Split(new[]
             {
                 ':'
@@ -21,7 +21,7 @@ namespace PostgresConnString.NET.Utils
             var password = authParts[1];
             var databaseName = databasePath?.Trim('/');
 
-            return (host, user, password, databaseName, port);
+            return (host, user, password, databaseName, port == -1 ? (int?) null : port);
         }
     }
 }
