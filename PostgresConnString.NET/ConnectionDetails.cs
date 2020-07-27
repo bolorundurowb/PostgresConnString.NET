@@ -81,6 +81,13 @@ namespace PostgresConnString.NET
             }
         }
 
+        /// <summary>
+        /// Parse a postgres connection url
+        /// </summary>
+        /// <param name="url">A postgres connection url</param>
+        /// <returns>The <see cref="ConnectionDetails"/></returns>
+        /// <exception cref="ArgumentNullException">Thrown on null input</exception>
+        /// <exception cref="ArgumentException">Thrown on empty or whitespace input</exception>
         public static ConnectionDetails Parse(string url)
         {
             if (url == null)
@@ -97,6 +104,10 @@ namespace PostgresConnString.NET
             return new ConnectionDetails(host, user, password, database, port);
         }
 
+        /// <summary>
+        /// Generates a formatted, valid Npgsql connection with the connection details
+        /// </summary>
+        /// <returns>A formatted <see cref="string"/></returns>
         public string ToNpgsqlSConnectionString() =>
             $"User ID={User};Password={Password};Server={Host};Port={Port};Database={Database};Pooling=true;SSL Mode=Prefer;Trust Server Certificate=true";
     }
