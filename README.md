@@ -1,6 +1,6 @@
 # PostgresConnString.NET
 
-[![Build status](https://ci.appveyor.com/api/projects/status/m47qrpg43t5l9mo3?svg=true)](https://ci.appveyor.com/project/BolorunduroWinnerTimothy/postgresconnstring-net)
+[![Build status](https://ci.appveyor.com/api/projects/status/grtkl701lefkykrl?svg=true)](https://ci.appveyor.com/project/BolorunduroWinnerTimothy/postgresconnstring-net)
  [![codecov](https://codecov.io/gh/bolorundurowb/PostgresConnString.NET/branch/master/graph/badge.svg)](https://codecov.io/gh/bolorundurowb/PostgresConnString.NET) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE) [![NuGet Badge](https://buildstats.info/nuget/PostgresConnString.NET)](https://www.nuget.org/packages/PostgresConnString.NET)
 
 This library aims to give as accurate an estimate of the read time for an article in HTML or Markdown.
