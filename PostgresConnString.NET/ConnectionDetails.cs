@@ -87,7 +87,7 @@ namespace PostgresConnString.NET
                 throw new ArgumentException("Url cannot be empty or contain only whitespace characters.", nameof(url));
 
             var (host, user, password, database, port) = Parser.Parse(url);
-            return new ConnectionDetails(host, user, password, database, port);
+            return new ConnectionDetails(host, user, password, database ?? string.Empty, port);
         }
 
         /// <summary>

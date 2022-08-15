@@ -15,6 +15,8 @@
         <FileVersion>1.0.1</FileVersion>
         <NeutralLanguage>en-NG</NeutralLanguage>
         <PackageVersion>1.0.1</PackageVersion>
+        <LangVersion>latest</LangVersion>
+        <Nullable>enable</Nullable>
     </PropertyGroup>
 
     <ItemGroup Condition="'$(TargetFramework)' == 'netstandard1.3'">
