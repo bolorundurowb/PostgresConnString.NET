@@ -9,7 +9,7 @@ namespace PostgresConnString.NET.Tests
         public void ShouldGenerateNpgsqlConnectionStringWithDefaultValues()
         {
             var details = new ConnectionDetails();
-            var connection = details.ToNpgsqlSConnectionString();
+            var connection = details.ToNpgsqlConnectionString();
 
             connection
                 .Should()
@@ -27,7 +27,7 @@ namespace PostgresConnString.NET.Tests
             var database = "database";
 
             var details = new ConnectionDetails(host, user, password, database, port);
-            var connection = details.ToNpgsqlSConnectionString();
+            var connection = details.ToNpgsqlConnectionString();
 
             connection
                 .Should()

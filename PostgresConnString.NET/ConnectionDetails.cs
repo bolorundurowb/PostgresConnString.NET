@@ -56,29 +56,19 @@ namespace PostgresConnString.NET
         public ConnectionDetails(string host, string user, string password, string database, int? port = null)
         {
             if (!string.IsNullOrWhiteSpace(host))
-            {
                 Host = host;
-            }
 
             if (!string.IsNullOrWhiteSpace(user))
-            {
                 User = user;
-            }
 
             if (!string.IsNullOrWhiteSpace(password))
-            {
                 Password = password;
-            }
 
             if (!string.IsNullOrWhiteSpace(database))
-            {
                 Database = database;
-            }
 
             if (port.HasValue)
-            {
                 Port = port.Value;
-            }
         }
 
         /// <summary>
@@ -91,24 +81,20 @@ namespace PostgresConnString.NET
         public static ConnectionDetails Parse(string url)
         {
             if (url == null)
-            {
                 throw new ArgumentNullException(nameof(url), "Url cannot be null.");
-            }
 
             if (string.IsNullOrWhiteSpace(url))
-            {
-                throw new ArgumentException(nameof(url), "Url cannot be empty or contain only whitespace characters.");
-            }
+                throw new ArgumentException("Url cannot be empty or contain only whitespace characters.", nameof(url));
 
             var (host, user, password, database, port) = Parser.Parse(url);
-            return new ConnectionDetails(host, user, password, database, port);
+            return new ConnectionDetails(host, user, password, database ?? string.Empty, port);
         }
 
         /// <summary>
         /// Generates a formatted, valid Npgsql connection with the connection details
         /// </summary>
         /// <returns>A formatted <see cref="string"/></returns>
-        public string ToNpgsqlSConnectionString() =>
+        public string ToNpgsqlConnectionString() =>
             $"User ID={User};Password={Password};Server={Host};Port={Port};Database={Database};Pooling=true;SSL Mode=Prefer;Trust Server Certificate=true";
     }
 }
