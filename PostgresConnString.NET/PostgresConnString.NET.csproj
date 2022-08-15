@@ -11,9 +11,10 @@
         <RepositoryUrl>https://github.com/bolorundurowb/PostgresConnString.NET</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <PackageTags>postgres, connection, string, connection string, parse</PackageTags>
-        <AssemblyVersion>1.0.0</AssemblyVersion>
-        <FileVersion>1.0.0</FileVersion>
+        <AssemblyVersion>1.0.1</AssemblyVersion>
+        <FileVersion>1.0.1</FileVersion>
         <NeutralLanguage>en-NG</NeutralLanguage>
+        <PackageVersion>1.0.1</PackageVersion>
     </PropertyGroup>
 
     <ItemGroup Condition="'$(TargetFramework)' == 'netstandard1.3'">
