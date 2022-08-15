@@ -108,7 +108,7 @@ namespace PostgresConnString.NET
         /// Generates a formatted, valid Npgsql connection with the connection details
         /// </summary>
         /// <returns>A formatted <see cref="string"/></returns>
-        public string ToNpgsqlSConnectionString() =>
+        public string ToNpgsqlConnectionString() =>
             $"User ID={User};Password={Password};Server={Host};Port={Port};Database={Database};Pooling=true;SSL Mode=Prefer;Trust Server Certificate=true";
     }
 }
